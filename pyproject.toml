@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "memealerts"
+version = "1.0.0"
+description = "Memealerts async/sync client"
+dependencies = [
+    "requests>=2.32.4",
+    "PyJWT>=2.10.1",
+    "pydantic>=2.11.7",
+    "httpx>=0.28.1"
+]
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+  {name = "Anton Kurenkov", email = "quantum0@mail.ru"}
+]
+maintainers = [
+  {name = "Anton Kurenkov", email = "quantum0@mail.ru"}
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+keywords = ["memes", "meme", "twitch", "memealert", "memealerts"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Author's Twitch" = "https://www.twitch.tv/quantum075"
+# Homepage = "https://example.com"
+# Documentation = "https://readthedocs.org"
+# Repository = "https://github.com/me/spam.git"
+# "Bug Tracker" = "https://github.com/me/spam/issues"
+# Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
+
+[tool.hatch.build.targets.wheel]
+ignore-vcs = true
+include = [
+  "src/**"
+]
