@@ -21,9 +21,9 @@ class Supporter(BaseModel):
     mutes: list
     muted_by_streamer: bool = Field(..., alias="mutedByStreamer")
 
-    @field_validator("supporterAvatar", mode="before")
-    def put_full_avatar_link(cls, v: AnyHttpUrl | str, _: ValidationInfo) -> AnyHttpUrl:  # noqa: N805
-        if v.startswith("media/"):
+    @field_validator("supporter_avatar", mode="before")
+    def put_full_avatar_link(cls, v: AnyHttpUrl | str, _: ValidationInfo) -> AnyHttpUrl | str:  # noqa: N805
+        if isinstance(v, str) and v.startswith("media/"):
             return AnyHttpUrl("https://memealerts.com/" + v)
         return v
 

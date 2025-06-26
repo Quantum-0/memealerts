@@ -1,5 +1,3 @@
-from client import MemealertsAsyncClient
+from .client import MemealertsAsyncClient
 
-__all__ = [
-    "MemealertsAsyncClient"
-]
+__all__ = ["MemealertsAsyncClient"]
