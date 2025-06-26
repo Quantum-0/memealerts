@@ -58,7 +58,7 @@ target-version = "py312"
 exclude = [".venv"]
 
 [tool.ruff.format]
-quote-style = "single"
+quote-style = "double"
 
 [tool.ruff.lint]
 select = [
@@ -105,8 +105,8 @@ select = [
 ignore = ["COM812", "RUF001", "RUF100", "RUF003"]
 
 [tool.ruff.lint.flake8-quotes]
-docstring-quotes = "single"
-inline-quotes = "single"
+docstring-quotes = "double"
+inline-quotes = "double"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

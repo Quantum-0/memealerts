@@ -1,7 +1,6 @@
 from datetime import datetime
 
-from pydantic import BaseModel, AnyHttpUrl, field_validator
-from pydantic import NonNegativeInt
+from pydantic import AnyHttpUrl, BaseModel, NonNegativeInt, field_validator
 from pydantic_core.core_schema import ValidationInfo
 
 from memealerts.types.user_id import UserID

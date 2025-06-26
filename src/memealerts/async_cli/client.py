@@ -1,5 +1,4 @@
 import httpx
-import asyncio
 
 from memealerts.base_client import BaseMAClient
 from memealerts.types.exceptions import MAError

@@ -15,7 +15,7 @@ class BaseMAClient(ABC):
     def __init__(self, token: str) -> None:
         token_parsed = jwt.decode(token, algorithms=["HS256"], options={"verify_signature": False})
         self.__streamer_user_id = token_parsed["id"]
-        self.__token_expires_in = datetime.fromtimestamp(token_parsed['exp'])
+        self.__token_expires_in = datetime.fromtimestamp(token_parsed["exp"])
         self.__token = token
         if self.__token_expires_in < datetime.now():
             raise MATokenExpired
