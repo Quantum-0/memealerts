@@ -12,6 +12,14 @@ dependencies = [
     "pydantic>=2.11.7",
     "httpx>=0.28.1"
 ]
+[project.optional-dependencies]
+test = [
+    "ruff==4.2.0",
+    "pytest-env==1.1.5",
+    "pre_commit==4.2.0",
+#    "pytest==8.3.5",
+#    "pytest-asyncio==0.26.0",
+]
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [
@@ -43,3 +51,67 @@ ignore-vcs = true
 include = [
   "src/**"
 ]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+exclude = [".venv"]
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.lint]
+select = [
+    "ANN001",
+    "ANN201",
+    "ANN202",
+    "ANN204",
+    "ANN206",
+    "A",
+    "ARG",
+    "B904",
+    "BLE",
+    "C",
+    "COM",
+    "E",
+    "ERA",
+    "F",
+    "FBT",
+    "I",
+    "ISC",
+    "W",
+    "N",
+    "NPY",
+    "PD",
+    "PIE",
+    "PLC",
+    "PLE",
+    "PLR",
+    "PLW",
+    "RET",
+    "RSE",
+    "RUF",
+    "Q",
+    "SIM",
+    "T",
+    "TCH",
+    "UP",
+    "DTZ001",
+    "DTZ005",
+    "DTZ006",
+    "DTZ007",
+    "DTZ012",
+]
+ignore = ["COM812", "RUF001", "RUF100", "RUF003"]
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "single"
+inline-quotes = "single"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope="function"
+env = []
+
+[tool.coverage.report]
+omit = ["config-3.py", "config.py"]

@@ -1,8 +1,26 @@
-name: Publish Python 🐍 distribution 📦 to PyPI and TestPyPI
+name: Linters and Formatters check and Publish Python 🐍 distribution 📦 to PyPI
 
 on: push
 
 jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+      - name: run ruff format
+        uses: astral-sh/ruff-action@v3
+        with:
+          args: "format --check --diff"
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+      - name: run ruff format
+        uses: astral-sh/ruff-action@v3
+
   build:
     name: Build distribution 📦
     runs-on: ubuntu-latest
