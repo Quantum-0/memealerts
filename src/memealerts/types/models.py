@@ -31,3 +31,30 @@ class Supporter(BaseModel):
 class SupportersList(BaseModel):
     data: list[Supporter]
     total: NonNegativeInt
+
+
+class User(BaseModel):
+    """User in /user/find"""
+
+    _id: UserID
+    id: UserID
+    name: str
+    username: str
+    avatar: AnyHttpUrl
+    created_at: datetime = Field(..., alias="createdAt")
+    channel: dict  # TODO: describe schema
+    last_visit: datetime = Field(..., alias="lastVisit")
+    avatar_assets: dict = Field(..., alias="avatarAssets")  # TODO: Describe schema
+    voice: dict  # TODO: Describe schema
+
+    @field_validator("avatar", mode="before")
+    def put_full_avatar_link(cls, v: AnyHttpUrl | str, _: ValidationInfo) -> AnyHttpUrl | str:  # noqa: N805
+        if isinstance(v, str) and v.startswith("media/"):
+            return AnyHttpUrl("https://memealerts.com/" + v)
+        return v
+
+
+class Balance(BaseModel):
+    balance: int
+    newbie_action_used: bool = Field(..., alias="newbieActionUsed")
+    welcome_bonus_earned: bool = Field(..., alias="welcomeBonusEarned")

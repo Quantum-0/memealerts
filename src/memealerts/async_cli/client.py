@@ -4,7 +4,7 @@ import httpx
 
 from memealerts.base_client import BaseMAClient
 from memealerts.types.exceptions import MAError
-from memealerts.types.models import SupportersList
+from memealerts.types.models import Balance, SupportersList, User
 from memealerts.types.user_id import UserID
 
 
@@ -44,3 +44,32 @@ class MemealertsAsyncClient(BaseMAClient):
             )
             if response.status_code != HTTPStatus.CREATED:
                 raise MAError
+
+    async def find_user(self, username: str) -> User:
+        """
+        Search for a user by username (which is user link actually, but not a name).
+        """
+
+        async with self.__client as cli:
+            response = await cli.post(
+                self._BASE_URL + "/user/find",
+                json={"username": username},
+                headers=self._headers,
+            )
+            if response.status_code == HTTPStatus.CREATED:
+                return User.model_validate(response.json())
+            raise MAError
+
+    async def get_balance(self, username: str) -> Balance:
+        """
+        Shows you balance for your account at streamer `username` channel
+        """
+        async with self.__client as cli:
+            response = await cli.post(
+                self._BASE_URL + "/user/balance",
+                json={"username": username},
+                headers=self._headers,
+            )
+            if response.status_code == HTTPStatus.CREATED:
+                return Balance.model_validate(response.json())
+            raise MAError
