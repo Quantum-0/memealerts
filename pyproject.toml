@@ -12,14 +12,6 @@ dependencies = [
     "pydantic>=2.11.7",
     "httpx>=0.28.1"
 ]
-[project.optional-dependencies]
-test = [
-    "ruff==4.2.0",
-    "pytest-env==1.1.5",
-    "pre_commit==4.2.0",
-#    "pytest==8.3.5",
-#    "pytest-asyncio==0.26.0",
-]
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [
@@ -36,6 +28,15 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+test = [
+    "ruff==4.2.0",
+    "pytest-env==1.1.5",
+    "pre_commit==4.2.0",
+#    "pytest==8.3.5",
+#    "pytest-asyncio==0.26.0",
 ]
 
 [project.urls]
