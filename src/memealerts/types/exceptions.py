@@ -1,5 +1,6 @@
 class MAError(Exception):
     """Memealerts error"""
 
-class MATokenExpired(MAError):
+
+class MATokenExpiredError(MAError):
     """Token is already expired."""

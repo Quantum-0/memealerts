@@ -102,7 +102,10 @@ select = [
     "DTZ007",
     "DTZ012",
 ]
-ignore = ["COM812", "RUF001", "RUF100", "RUF003"]
+ignore = ["COM812", "RUF001", "RUF100", "RUF003", "RUF200", "ISC001"]
+
+[tool.ruff.lint.per-file-ignores]
+"pyproject.toml" = ["RUF200"]
 
 [tool.ruff.lint.flake8-quotes]
 docstring-quotes = "double"
