@@ -27,3 +27,7 @@ class BaseMAClient(ABC):
     @property
     def _headers(self) -> Mapping[str, str]:
         return {"Authorization": f"Bearer {self.__token}"}
+
+    @property
+    def token_expires_in(self) -> datetime:
+        return self.__token_expires_in

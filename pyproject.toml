@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "memealerts"
-version = "1.0.3"
+version = "1.0.4"
 description = "Memealerts async/sync client"
 dependencies = [
     "requests>=2.32.4",
