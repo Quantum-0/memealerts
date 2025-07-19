@@ -1,8 +1,9 @@
 from datetime import datetime
 
-from memealerts.types.user_id import UserID
 from pydantic import AnyHttpUrl, BaseModel, Field, NonNegativeInt, field_validator
 from pydantic_core.core_schema import ValidationInfo
+
+from memealerts.types.user_id import UserID
 
 
 class Supporter(BaseModel):
