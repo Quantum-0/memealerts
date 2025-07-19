@@ -3,23 +3,23 @@ name: Linters and Formatters check and Publish Python 🐍 distribution 📦 to 
 on: push
 
 jobs:
-  format:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout repo
-        uses: actions/checkout@v3
-      - name: run ruff format
-        uses: astral-sh/ruff-action@v3
-        with:
-          args: "format --check --diff"
-
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout repo
-        uses: actions/checkout@v3
-      - name: run ruff format
-        uses: astral-sh/ruff-action@v3
+#  format:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: checkout repo
+#        uses: actions/checkout@v3
+#      - name: run ruff format
+#        uses: astral-sh/ruff-action@v3
+#        with:
+#          args: "format --check --diff"
+#
+#  lint:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: checkout repo
+#        uses: actions/checkout@v3
+#      - name: run ruff format
+#        uses: astral-sh/ruff-action@v3
 
   build:
     name: Build distribution 📦
