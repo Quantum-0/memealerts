@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING, Any
 import httpx
 
 from memealerts.base_client import BaseMAClient
+from memealerts.types.encoder import replace_rootmodel_with_str
 from memealerts.types.exceptions import MAError
 from memealerts.types.models import Balance, SupportersList, User
 
@@ -103,6 +104,7 @@ class MemealertsAsyncClient(BaseMAClient):
         expected_status=HTTPStatus.CREATED -> проверяем вручную и бросаем MAError иначе.
         """
         self._ensure_open()
+        json = replace_rootmodel_with_str(json)
         resp = await self._client.post(path, json=json)
         if expected_status is None:
             resp.raise_for_status()
