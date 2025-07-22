@@ -7,7 +7,7 @@ import httpx
 
 from memealerts.base_client import BaseMAClient
 from memealerts.types.encoder import replace_rootmodel_with_str
-from memealerts.types.exceptions import MAError
+from memealerts.types.exceptions import MAError, MAUserNotFoundError
 from memealerts.types.models import Balance, SupportersList, User
 
 if TYPE_CHECKING:
@@ -143,7 +143,10 @@ class MemealertsAsyncClient(BaseMAClient):
         Search for a user by username (which is user link actually, but not a name).
         """
         resp = await self._post("/user/find", json={"username": username}, expected_status=HTTPStatus.CREATED)
-        return User.model_validate(resp.json())
+        try:
+            return User.model_validate(resp.json())
+        except Exception as exc:
+            raise MAUserNotFoundError from exc
 
     async def get_balance(self, username: str) -> Balance:
         """

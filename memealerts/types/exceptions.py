@@ -4,3 +4,7 @@ class MAError(Exception):
 
 class MATokenExpiredError(MAError):
     """Token is already expired."""
+
+
+class MAUserNotFoundError(MAError):
+    """User not found."""
