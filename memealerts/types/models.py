@@ -16,16 +16,18 @@ class Supporter(BaseModel):
     joined: datetime
     last_support: datetime | None = Field(None, alias="lastSupport")
     supporter_name: str = Field(..., alias="supporterName")
-    supporter_avatar: AnyHttpUrl = Field(..., alias="supporterAvatar")
+    supporter_avatar: AnyHttpUrl | None = Field(None, alias="supporterAvatar")
     supporter_link: str = Field(..., alias="supporterLink")
     supporter_id: UserID = Field(..., alias="supporterId")
     mutes: list
     muted_by_streamer: bool = Field(..., alias="mutedByStreamer")
 
     @field_validator("supporter_avatar", mode="before")
-    def put_full_avatar_link(cls, v: AnyHttpUrl | str, _: ValidationInfo) -> AnyHttpUrl | str:  # noqa: N805
+    def put_full_avatar_link(cls, v: AnyHttpUrl | str, _: ValidationInfo) -> AnyHttpUrl | str | None:  # noqa: N805
         if isinstance(v, str) and v.startswith("media/"):
             return AnyHttpUrl("https://memealerts.com/" + v)
+        if isinstance(v, str) and v == "":
+            return None
         return v
 
 
