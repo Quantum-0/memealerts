@@ -14,7 +14,7 @@ class Supporter(BaseModel):
     spent: NonNegativeInt
     purchased: NonNegativeInt
     joined: datetime
-    last_support: datetime = Field(..., alias="lastSupport")
+    last_support: datetime | None = Field(None, alias="lastSupport")
     supporter_name: str = Field(..., alias="supporterName")
     supporter_avatar: AnyHttpUrl = Field(..., alias="supporterAvatar")
     supporter_link: str = Field(..., alias="supporterLink")
